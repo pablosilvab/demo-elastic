@@ -1,26 +1,26 @@
 # Elastic-Lib
-Este proyecto tiene como objetivo proveer una función para escribir logs en Elasticsearch.
+This project allows writing logs to Elasticsearch.
 
-## Requisitos
+## Requirements
 
-* Tener instalado Go.
-* Tener un server de Elasticsearch en ejecución.
+* Go
+* Run Elasticsearch
 
+For Elastic I use Docker
 ```
 docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.6.2
 ```
 
-## Instalación
+## Installation
 
-Ejecutar 
+Run 
 ```
 go get github.com/pablosilvab/elastic
 ```
 
-## Ejemplo 🚀
+## Example 🚀
 
-Se ha incluído un ejemplo que únicamente genera un índice y escribe un registro en Elasticsearch. 
-
+The example create an index and write a record in Elasticsearch.
 ```
 make example
 ```
