@@ -10,9 +10,9 @@ import (
 	"strconv"
 	"sync"
 	"time"
-
-	"github.com/elastic/go-elasticsearch"
-	"github.com/elastic/go-elasticsearch/esapi"
+	
+    "github.com/elastic/go-elasticsearch/v7"  
+	"github.com/elastic/go-elasticsearch/v7/esapi"
 )
 
 func Log(index string, logger interface{}) {
@@ -26,7 +26,6 @@ func Log(index string, logger interface{}) {
 	//
 	// An `ELASTICSEARCH_URL` environment variable will be used when exported.
 	//
-
 	urlElastic := validateEnv(os.Getenv("ELASTIC_URL"))
 
 	cfg := elasticsearch.Config{
