@@ -4,14 +4,13 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"fmt"
 	"log"
 	"os"
 	"strconv"
 	"sync"
 	"time"
-	
-    "github.com/elastic/go-elasticsearch/v7"  
+
+	"github.com/elastic/go-elasticsearch/v7"
 	"github.com/elastic/go-elasticsearch/v7/esapi"
 )
 
@@ -37,7 +36,6 @@ func Log(index string, logger interface{}) {
 	if err != nil {
 		log.Fatalf("Error creating the client: %s", err)
 	}
-	fmt.Println(index)
 
 	wg.Add(1)
 	go func() {
