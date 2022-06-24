@@ -1,20 +1,23 @@
 package main
 
 import (
-	"time"
 	"log"
+	"time"
 
 	"github.com/pablosilvab/elastic"
 )
 
 type Request struct {
-	Request string
-	Method  string
+	Request   string
+	Method    string
 	Timestamp time.Time
 }
 
 func main() {
 	log.Println("Writing log..")
-	elastic.Log("test", Request{"/test", "GET", time.Now()})
-	log.Println("Ok!")
+	err := elastic.Log("test", Request{"/test", "GET", time.Now()})
+	if err != nil {
+		log.Println("Cannot connect Elastic..")
+	}
+	log.Println("Hello!")
 }

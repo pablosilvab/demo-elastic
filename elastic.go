@@ -14,7 +14,7 @@ import (
 	"github.com/elastic/go-elasticsearch/v7/esapi"
 )
 
-func Log(index string, logger interface{}) {
+func Log(index string, logger interface{}) error {
 	log.SetFlags(0)
 
 	var (
@@ -35,13 +35,18 @@ func Log(index string, logger interface{}) {
 	es, err := elasticsearch.NewClient(cfg)
 	if err != nil {
 		log.Fatalf("Error creating the client: %s", err)
+		return err
+	}
+
+	_, err = es.Info()
+	if err != nil {
+		log.Printf("Setup ElasticSearch: failed cause, %s", err)
+		return err
 	}
 
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-
-		// Build the request body.
 
 		// Set up the request object.
 		body, err := json.Marshal(logger)
@@ -62,11 +67,9 @@ func Log(index string, logger interface{}) {
 			log.Fatalf("Error getting response: %s", err)
 		}
 		defer res.Body.Close()
-
 	}()
-
 	wg.Wait()
-
+	return err
 }
 
 func validateEnv(url string) string {
