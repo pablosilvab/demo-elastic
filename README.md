@@ -1,4 +1,7 @@
 # Elastic-Lib
+
+[![Go Reference](https://pkg.go.dev/badge/golang.org/x/example.svg)](https://pkg.go.dev/github.com/pablosilvab/elastic)
+
 This project allows writing logs to Elasticsearch.
 
 ## Requirements
